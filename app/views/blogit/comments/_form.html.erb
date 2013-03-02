@@ -16,7 +16,7 @@
       <div class="control-group">
         <%= f.label :name, t(:name, scope: 'blogit.comments'), :class => "control-label" %>
         <div class="controls">
-          <%= f.text_field :name %>
+          <%= f.text_field :name, :class => 'span5' %>
           <%= errors_on(comment, :name) %>
         </div>
       </div>
@@ -26,7 +26,7 @@
       <div class="control-group">
         <%= f.label :email, t(:email_never_displayed, scope: 'blogit.comments'), :class => "control-label" %>
         <div class="controls">
-          <%= f.email_field :email %>
+          <%= f.email_field :email, :class => 'span5' %>
           <%= errors_on(comment, :email) %>
         </div>
       </div>
@@ -36,7 +36,7 @@
       <div class="control-group">
         <%= f.label :website, t(:your_website, scope: 'blogit.comments'), :class => "control-label" %>
         <div class="controls">
-          <%= f.url_field :website %>
+          <%= f.url_field :website, :class => 'span5' %>
           <%= errors_on(comment, :website) %>
         </div>
       </div>

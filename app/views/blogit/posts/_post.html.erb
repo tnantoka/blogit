@@ -7,10 +7,14 @@
   <%= render "blogit/posts/post_body", post: post %>
 
   <%# Render admin links to edit/delete this post %>
+  <p>
   <%= render "blogit/posts/post_links", post: post %>
+  </p>
 
   <%# Render info about the person who wrote this post %>
+  <p>
   <%= render "blogit/posts/blogger_information", post: post %>
+  </p>
 
   <%# Render the no. of comments %>
   <%= render "blogit/posts/comments_count",
