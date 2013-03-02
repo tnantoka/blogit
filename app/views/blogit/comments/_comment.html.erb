@@ -1,6 +1,6 @@
 <%= content_tag(:article, id: "blog_comment_#{comment.id}", class: "blog_comment") do %>
   <%= content_tag(:div, class: "blog_comment_name", id: "blog_comment_#{comment.id}_name") do %>
-    <%=t :wrote, scope: 'blogit.comments', author: comment.website? ? link_to(comment.name, comment.website) : comment.name %>
+    <%=t(:wrote, scope: 'blogit.comments', author: comment.website? ? link_to(h(comment.name), comment.website) : h(comment.name)).html_safe %>
   <% end %>
 
 
