@@ -1,41 +1,65 @@
 
 <%= form_for [post, comment], remote: true,
   html: {
-    class: "new_blog_comment", id: "new_blog_comment" } do |f| -%>
+    class: "new_blog_comment form-horizontal", id: "new_blog_comment" } do |f| -%>
 
-  <p><%=t :leave_a_comment, scope: 'blogit.comments'%></p>
+  <fieldset>
+    <legend><%=t :leave_a_comment, scope: 'blogit.comments'%></legend>
 
-  <%= field class: "hidden" do %>
-    <%= f.label :nickname %>
-    <%= f.text_field :nickname %>
-    Hide me using CSS
-  <% end %>
+    <%= field class: "hidden" do %>
+      <%= f.label :nickname %>
+      <%= f.text_field :nickname %>
+      Hide me using CSS
+    <% end %>
 
-  <%= field do %>
-    <%= f.label :name, t(:name, scope: 'blogit.comments') %><br>
-    <%= f.text_field :name %>
-    <%= errors_on(comment, :name) %>
-  <% end %>
+    <%= field do %>
+      <div class="control-group">
+        <%= f.label :name, t(:name, scope: 'blogit.comments'), :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :name %>
+          <%= errors_on(comment, :name) %>
+        </div>
+      </div>
+    <% end %>
 
-  <%= field do %>
-    <%= f.label :email, t(:email_never_displayed, scope: 'blogit.comments') %><br>
-    <%= f.email_field :email %>
-    <%= errors_on(comment, :email) %>
-  <% end %>
+    <%= field do %>
+      <div class="control-group">
+        <%= f.label :email, t(:email_never_displayed, scope: 'blogit.comments'), :class => "control-label" %>
+        <div class="controls">
+          <%= f.email_field :email %>
+          <%= errors_on(comment, :email) %>
+        </div>
+      </div>
+    <% end %>
 
-  <%= field do %>
-    <%= f.label :website, t(:your_website, scope: 'blogit.comments') %><br>
-    <%= f.url_field :website %>
-    <%= errors_on(comment, :website) %>
-  <% end %>
+    <%= field do %>
+      <div class="control-group">
+        <%= f.label :website, t(:your_website, scope: 'blogit.comments'), :class => "control-label" %>
+        <div class="controls">
+          <%= f.url_field :website %>
+          <%= errors_on(comment, :website) %>
+        </div>
+      </div>
+    <% end %>
 
-  <%= field do %>
-    <%= f.label :body, t(:your_comment, scope: 'blogit.comments') %><br>
-    <%= f.text_area :body %><br>
-    <%= errors_on(comment, :body) %>
-  <% end %>
+    <%= field do %>
+      <div class="control-group">
+        <%= f.label :body, t(:your_comment, scope: 'blogit.comments'), :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_area :body, :rows => 5, :class => "span5" %>
+          <%= errors_on(comment, :body) %>
+        </div>
+      </div>
+    <% end %>
 
-  <%= actions do %>
-    <%= f.submit t(:add_comment, scope: 'blogit.comments'), :disable_with => t(:adding_comment, scope: 'blogit.comments') %>
-  <% end %>
+    <%= actions do %>
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit t(:add_comment, scope: 'blogit.comments'), :disable_with => t(:adding_comment, scope: 'blogit.comments'), :class => "btn btn-primary"  %>
+        </div>
+      </div>
+    <% end %>
+
+  </fieldset>
+
 <% end -%>

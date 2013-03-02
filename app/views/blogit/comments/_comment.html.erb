@@ -1,19 +1,21 @@
-<%= content_tag(:article, id: "blog_comment_#{comment.id}", class: "blog_comment") do %>
-  <%= content_tag(:div, class: "blog_comment_name", id: "blog_comment_#{comment.id}_name") do %>
+<%= content_tag(:dl, id: "blog_comment_#{comment.id}", class: "blog_comment") do %>
+  <%= content_tag(:dt, class: "blog_comment_name", id: "blog_comment_#{comment.id}_name") do %>
     <%=t(:wrote, scope: 'blogit.comments', author: comment.website? ? link_to(h(comment.name), comment.website) : h(comment.name)).html_safe %>
   <% end %>
 
 
-  <%= content_tag(:div, class: "blog_comment_body",
+  <dd>
+  <%= content_tag(:p, class: "blog_comment_body",
       id: "blog_comment_#{comment.id}_body") do %>
       <%= format_content comment.body || "" %>
   <% end %>
 
-  <%= blog_tag(:footer, type: "comment") do %>
+  <%= blog_tag(:p, type: "comment") do %>
     <%=t :posted_on, scope: 'blogit.comments'%> <%= time_tag(comment.created_at, Blogit.configuration.datetime_format) %>
   <% end %>
 
   <%= render partial: "blogit/comments/admin_links", locals: {comment: comment} %>
+  </dd>
 
 <% end if comment.persisted? %>
 
